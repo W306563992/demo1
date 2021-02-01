@@ -29,17 +29,17 @@ window.jQuery = function (selector){
         dom[i].classList.add(className)
         }
         return this
-      },
+      }
     //   parent(){
     //       let arrParent = []
 
     //       return dom.parentNode
     //   },
-      each(){
-          for (let i = 0; i < dom.length; i++) {
-              console.log(dom[i])
-          }
-      }
+    //   each(){
+    //       for (let i = 0; i < dom.length; i++) {
+    //           console.log(dom[i])
+    //       }
+    //   }
 
     }
 }
