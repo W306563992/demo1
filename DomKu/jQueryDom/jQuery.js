@@ -1,45 +1,47 @@
-window.jQuery = function (selector){
-    // jQuery 返回的永远都是一个数组，里面有节点，还有函数
-    // 里面的孩子也是数组，不管我jQuery("#box")find()也好还是 jQuery("#box")[0].find也好，都可以查
-        let dom 
-        if( typeof selector ==="string"){
-            if (selector[0] == '<'){
-                dom = [document.createElement(selector)]
-            }else {
-                dom = document.querySelectorAll(selector)
-               
-            } 
-            }else {
-                dom = selector
-            }
-            console.log(dom)
-    
-    return {
-        dom: dom,
-        find(selectorString){
-            let arr = []
-            for (let i = 0 ; i < dom.length;i++){
-                arr = arr.concat(Array.from(dom[i].querySelectorAll(selectorString)))
-            }
-            return jQuery(arr)
-        },
-        // 闭包：函数访问外部的变量
-    addClass(className){
-        for(let i=0;i<dom.length;i++){
-        dom[i].classList.add(className)
+window.jqMe = function (selector){
+    let api 
+    if(selector instanceof Array) {
+        console.log('是数组')
+        api = selector
+        
+    }else{
+        console.log('不是数组')
+        api = document.querySelectorAll(selector)
+    }
+return  {
+    oldApi: selector.oldApi,
+    addClass(className) {
+        for (let i = 0 ; i < api.length ; i ++){
+            api[i].classList.add(className)
         }
         return this
-      }
-    //   parent(){
-    //       let arrParent = []
-
-    //       return dom.parentNode
-    //   },
-    //   each(){
-    //       for (let i = 0; i < dom.length; i++) {
-    //           console.log(dom[i])
-    //       }
-    //   }
-
+    },
+    find(selector) {
+        let arr= []
+        for(let i = 0 ; i < api.length; i++){
+            console.log(api[i].querySelectorAll(selector))
+            arr = arr.concat(Array.from(api[i].querySelectorAll(selector)))
+        }
+        arr.oldApi = this
+        return jqMe(arr)
+    },
+    // 返回上一个操作的api
+    end(){
+        return this.oldApi;
+    },
+    // 遍历当前所有元素
+    each(fn){
+        for(let i = 0 ; i < api.length; i ++){
+            fn.call(null, api[i],i) // 实际参数，传递出去！
+        }
+        return this; //返回当前api
+    },
+    // 找到当前元素的父亲
+    parent(){
+        let arrParent =[]
+        this.each((node)=>{arrParent.push(node.parentNode)}) // 形式参数
+        console.log('++++++'+arrParent)
+        return jqMe(arrParent)
     }
+}
 }
