@@ -4,17 +4,22 @@ ul,li,ol { list-style: none;}
 a{ text-decoration: none; color: inherit;}
 input{outline: none;}
 
-    .icon {
-       width: 1em; height: 1em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-       font-size: inherit;
-    }
+.banxin {
+    max-width: 750px;
+    margin: 0 auto;
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    font-size: inherit;
+}
 
 body{
     background-color: #eee;
 }
+/* 搜索框开始了 */
 
 .searchHeader .searchDiv form{
     display: flex;
@@ -44,6 +49,7 @@ body{
     flex-wrap: wrap;
 }
 .mainList >.list li {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +58,18 @@ body{
     background-color: #fff;
     border-radius: 8px;
     margin: 5px;
+    cursor: pointer;
+}
+.cancel {   
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0px 3px;
+    color: #999;
+    font-size: 20px;
+}
+.cancel:hover{
+    color: orangered;
 }
 .mainList .siteName{
     font-size: 50px;
@@ -65,4 +83,33 @@ body{
     color: rgb(66, 65, 65);
     overflow: hidden;
     text-overflow: ellipsis;
+}
+@media screen and (min-width: 750px){
+    .searchHeader input {
+        padding: 18px;
+        border: 1px solid  rgb(73, 121, 226);
+        border-radius: 17px;
+    }
+    .searchHeader button {
+        font-size: 20px;
+        padding: 0 20px;
+        border-radius: 10px;
+    }
+    .banxin {
+        padding-top: 20%;
+        max-width: 750px;
+        margin: 0 auto;
+    }
+    .mainList >.list li {
+        width: 200px;
+        height: 200px;
+    }
+    .mainList .siteName{
+        padding-top: 20px;
+        font-size: 80px;
+    }
+    .mainList .site {
+        font-size: 20px;
+        color: rgb(83, 82, 82);
+    }
 }
