@@ -9,49 +9,23 @@
 <body>
     <header class="searchHeader">
         <div class="searchDiv">
-            <form action="" method="GET">
-                <input type="text">
-                <button type="submit">搜索</button>
+            <form action="https://www.baidu.com/s" method="GET">
+                <input name ="wd" type="text">
+                <button type="submit" id="search">搜索</button>
             </form>
         </div>
     </header>
     <main class="mainList">
         <div class="list">
-            <ul>
-                <a href="#">
-                <li>
-                    
-                        <div class="siteName">A</div>
-                        <div class="site">binjosf.cdfaodu.com</div>
-              
-                </li>
-                </a>
-                <a href="#">
-                <li>
-                    
-                    <div class="siteName">A</div>
-                    <div class="site">binjosf.cdfaodu.com</div>
-          
+            <ul id="listContent">
+                <li class="addButton">
+                    <div class="siteName">
+                        <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                </div>
+                    <div class="site">添加网站吧</div>
             </li>
-                </a>
-        <a  href="#">
-            <li>
-                    
-                <div class="siteName">A</div>
-                <div class="site">binjosf.cdfaodu.com</div>
-      
-        </li>
-            </a>
-            <li>
-                    
-                <div class="siteName">
-                    <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-add"></use>
-                </svg>
-            </div>
-                <div class="site">添加网站吧</div>
-      
-        </li>
             </ul>
         </div>
     </main>
